@@ -1,4 +1,4 @@
-# Universal-PS-X-Serial-ID
+# Universal PS-X Serial ID
 Get PS1 Serial ID From BIN, VCD, PBP, PKG
 
 - [x] Support .BIN, .VCD, .PBP, .PKG

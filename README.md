@@ -3,7 +3,7 @@ Get PS1 Serial ID From BIN, VCD, PBP, PKG
 
 - [x] Support .BIN, .VCD, .PBP, .PKG
 - [x] Support LSP Serial ID
-- [X] Support Some exeception games don"t have system.cnf
+- [X] Support "Support some exception games that don't have a system.cnf file
 
 ```
 UPSX_SID "filename"  # Output original Serial ID found

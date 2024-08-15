@@ -156,23 +156,26 @@ int main(int argc, char* argv[]) {
 
     if (!searchString.empty()) {
         if (FormatWithUnderscoreAndDot) {
-            // Force the format is "SLUS-123.45"
-            if (regex_match(searchString, regex("[A-Z]{4}[0-9]{5}"))) {
-                searchString.insert(4, "_");
-                searchString.insert(8, ".");
-            }
+            // Ensure the format is "SLUS_123.45"
+            searchString.erase(remove(searchString.begin(), searchString.end(), '.'), searchString.end());
+            searchString.erase(remove(searchString.begin(), searchString.end(), '_'), searchString.end());
+            searchString.erase(remove(searchString.begin(), searchString.end(), '-'), searchString.end());
+            searchString.insert(4, "_");
+            searchString.insert(8, ".");
         }
-
+        
         if (RemoveDotsOnly) {
             // Ensure the format is "SLUS-12345"
             searchString.erase(remove(searchString.begin(), searchString.end(), '.'), searchString.end());
             searchString.erase(remove(searchString.begin(), searchString.end(), '_'), searchString.end());
+            searchString.erase(remove(searchString.begin(), searchString.end(), '-'), searchString.end());
             searchString.insert(4, "-");
         }
         if (RemoveUnderscoresAndDots) {
             // Ensure the format is "SLUS12345"
-            searchString.erase(remove(searchString.begin(), searchString.end(), '_'), searchString.end());
             searchString.erase(remove(searchString.begin(), searchString.end(), '.'), searchString.end());
+            searchString.erase(remove(searchString.begin(), searchString.end(), '_'), searchString.end());
+            searchString.erase(remove(searchString.begin(), searchString.end(), '-'), searchString.end());
         }
 
         cout << searchString << endl;

@@ -155,6 +155,8 @@ int main(int argc, char* argv[]) {
     }
 
     if (!searchString.empty()) {
+
+        if (regex_match(searchString, regex("[A-Z]{4}[_-][0-9]{3}[.][0-9]{2}"))) {
         if (FormatWithUnderscoreAndDot) {
             // Ensure the format is "SLUS_123.45"
             searchString.erase(remove(searchString.begin(), searchString.end(), '.'), searchString.end());
@@ -170,13 +172,15 @@ int main(int argc, char* argv[]) {
             searchString.erase(remove(searchString.begin(), searchString.end(), '_'), searchString.end());
             searchString.erase(remove(searchString.begin(), searchString.end(), '-'), searchString.end());
             searchString.insert(4, "-");
+            }
         }
+
         if (RemoveUnderscoresAndDots) {
             // Ensure the format is "SLUS12345"
             searchString.erase(remove(searchString.begin(), searchString.end(), '.'), searchString.end());
             searchString.erase(remove(searchString.begin(), searchString.end(), '_'), searchString.end());
             searchString.erase(remove(searchString.begin(), searchString.end(), '-'), searchString.end());
-        }
+            }
 
         cout << searchString << endl;
     }
